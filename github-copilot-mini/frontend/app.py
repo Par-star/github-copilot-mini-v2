@@ -12,9 +12,15 @@ Run karne ke liye:
 
 import streamlit as st
 import requests
+import os
 
-# Backend ka base URL (jab tum backend run karoge to ye address hoga)
-BACKEND_URL = "http://localhost:8000"
+# Backend ka base URL:
+# - Local testing ke liye: localhost
+# - Streamlit Cloud par deploy karte waqt: Secrets mein BACKEND_URL set karo
+try:
+    BACKEND_URL = st.secrets["BACKEND_URL"]
+except Exception:
+    BACKEND_URL = os.getenv("BACKEND_URL", "http://localhost:8000")
 
 st.set_page_config(page_title="GitHub Copilot Mini", page_icon="🤖", layout="wide")
 

@@ -40,7 +40,28 @@ Frontend (Streamlit UI) chalega: `http://localhost:8501`
 
 > **Note:** Backend aur Frontend dono ko **alag-alag terminal** mein, **saath mein** chalana hai. Ye poora project **100% Python** mein bana hai — backend FastAPI hai, frontend Streamlit hai, koi HTML/CSS/JS nahi likha gaya.
 
-## Example Requests
+## Deployment
+
+⚠️ **Netlify is NOT suitable** for this project (it only hosts static sites / JS serverless functions, not Python servers).
+
+### Backend → Render
+1. Push code to GitHub
+2. Render.com → New Web Service → connect repo
+3. Build Command: `pip install -r requirements.txt`
+4. Start Command: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
+5. Add environment variables: `GEMINI_API_KEY`, `GITHUB_TOKEN`
+6. Copy the deployed URL (e.g. `https://your-app.onrender.com`)
+
+### Frontend → Streamlit Community Cloud
+1. https://share.streamlit.io → sign in with GitHub
+2. New app → select repo → main file path: `frontend/app.py`
+3. In "Advanced settings" → Secrets, add:
+   ```
+   BACKEND_URL = "https://your-app.onrender.com"
+   ```
+4. Deploy
+
+
 
 ### Explain Code
 ```bash
