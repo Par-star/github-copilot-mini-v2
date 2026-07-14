@@ -12,7 +12,7 @@ import google.generativeai as genai
 # API key environment variable se aayegi (.env file mein set karo)
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
-MODEL = os.getenv("GEMINI_MODEL", "gemini-2.0-flash")           # Chat/code ke liye
+MODEL = os.getenv("GEMINI_MODEL", "gemini-1.5-flash")           # Chat/code ke liye
 EMBEDDING_MODEL = os.getenv("GEMINI_EMBEDDING_MODEL", "models/text-embedding-004")  # Vector DB ke liye
 
 
